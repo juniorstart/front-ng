@@ -9,6 +9,7 @@ import { HomeModule } from './home/home.module';
 import { TodolistsModule } from './todolists/todolists.module';
 import { RecruitmentInfoModule } from './recruitment-info/recruitment-info.module';
 import { UiToolbarModule } from 'projects/ui-toolbar/src/public-api';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UiToolbarModule } from 'projects/ui-toolbar/src/public-api';
     HomeModule,
     TodolistsModule,
     RecruitmentInfoModule,
-    UiToolbarModule
+    UiToolbarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
