@@ -1,0 +1,19 @@
+
+<lib-ui-toolbar [title]="title" [sidenav]="sidenav"></lib-ui-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
+    <nav>
+      <a mat-button class="nav-link" *ngFor="let link of links"
+        [routerLink]="link.path" routerLinkActive="active">
+        <mat-icon>{{link.icon}}</mat-icon>
+        {{link.label}}
+      </a>
+    </nav>
+  </mat-sidenav>
+
+  <div class="app-content">
+    <app-recruitment-info></app-recruitment-info>
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
