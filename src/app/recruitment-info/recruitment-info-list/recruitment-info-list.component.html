@@ -1,0 +1,41 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Projects</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let project of projects.data" (click)="selected.emit(project)">
+        <h3 mat-line>
+          {{project.companyName}}
+        </h3>
+        <p mat-line>
+          {{project.city}}
+        </p>
+        <p mat-line>
+          {{project.workPlace}}
+        </p>
+        <p mat-line>
+          {{project.dateOfCompanyReply}}
+        </p>
+        <p mat-line>
+          {{project.applicationDate}}
+        </p>
+        <p mat-line>
+          {{project.companyReply}}
+        </p>
+        <p mat-line>
+          {{project.notes}}
+        </p>
+        <p mat-line>
+          {{project.linkToApplication}}
+        </p>
+
+        <button *ngIf="!readonly" mat-icon-button (click)="deleted.emit(project);$event.stopImmediatePropagation();">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
