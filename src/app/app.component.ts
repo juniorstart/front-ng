@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'junior-start';
+
+  links = [
+    { path: '/home', icon: 'home', label: 'Home' },
+    { path: '/customers', icon: 'face', label: 'Customers' },
+    { path: '/projects', icon: 'work', label: 'Projects' }
+  ];
+  
 }

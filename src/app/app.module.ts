@@ -10,21 +10,23 @@ import { TodolistsModule } from './todolists/todolists.module';
 import { RecruitmentInfoModule } from './recruitment-info/recruitment-info.module';
 import { UiToolbarModule } from 'projects/ui-toolbar/src/public-api';
 import { HttpClientModule } from '@angular/common/http';
+import { UiLoginModule } from 'projects/ui-login/src/public-api';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
+    RecruitmentInfoModule,
+    HttpClientModule,
     MaterialModule,
     HomeModule,
     TodolistsModule,
-    RecruitmentInfoModule,
     UiToolbarModule,
-    HttpClientModule
+    UiLoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
