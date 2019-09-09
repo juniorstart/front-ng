@@ -11,6 +11,7 @@ import { RecruitmentInfoModule } from './recruitment-info/recruitment-info.modul
 import { UiToolbarModule } from 'projects/ui-toolbar/src/public-api';
 import { HttpClientModule } from '@angular/common/http';
 import { UiLoginModule } from 'projects/ui-login/src/public-api';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { UiLoginModule } from 'projects/ui-login/src/public-api';
     UiToolbarModule,
     UiLoginModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

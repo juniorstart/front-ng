@@ -21,6 +21,4 @@ export const uiLoginRoutes: Route[] = [
   exports: [UiLoginComponent]
 })
 
-
-
 export class UiLoginModule { }
