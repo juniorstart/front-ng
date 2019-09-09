@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CoreDataService } from 'projects/core-data/src/lib/core-data.service';
-import { Project } from 'projects/core-data/src/lib/project';
+import {RecruitmentInfoService } from '../services/recruitment-info.service';
+import { Project } from '../interfaces/project';
 
 @Component({
   selector: 'app-recruitment-info',
@@ -12,7 +12,7 @@ export class RecruitmentInfoComponent implements OnInit {
   projects$;
   selectedProject: Project;
 
-  constructor(private projectsService: CoreDataService) { }
+  constructor(private recruitmentInfoService: RecruitmentInfoService) { }
 
   ngOnInit() {
     this.getProjects();
@@ -40,7 +40,7 @@ export class RecruitmentInfoComponent implements OnInit {
 
   getProjects() {
     //this.projects$ = this.projectsService.all();
-    this.projects$ = this.projectsService.getFake();
+    this.projects$ = this.recruitmentInfoService.all();
   }
   saveProject(project) {
     if(!project.id) {
@@ -49,14 +49,14 @@ export class RecruitmentInfoComponent implements OnInit {
   }
 
   createProject(project) {
-    this.projectsService.create(project)
+    this.recruitmentInfoService.create(project)
       .subscribe(result => {
         this.getProjects();
         this.resetProject();
       });
   }
   deleteProject(project) {
-    this.projectsService.delete(project.id)
+    this.recruitmentInfoService.delete(project.id)
       .subscribe(result => this.getProjects());
   }
 

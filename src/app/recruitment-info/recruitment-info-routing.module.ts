@@ -4,7 +4,7 @@ import { RecruitmentInfoComponent } from './recruitment-info.component';
 
 
 const routes: Routes = [
-  { path: '', component: RecruitmentInfoComponent }
+  { path: 'recruitmentInfo', component: RecruitmentInfoComponent }
 ];
 
 @NgModule({
