@@ -4,15 +4,11 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-ui-login',
-  template: `
-    <p>
-      ui-login works!
-    </p>
-  `,
+  templateUrl: './ui-login.component.html',
   styles: []
 })
 export class UiLoginComponent implements OnInit {
-  userLogin = { username: '', password: ''};
+  userLogin = { login: '', password: ''};
 
   constructor(private router: Router, private authService: AuthenticationService) { }
 
@@ -21,8 +17,7 @@ export class UiLoginComponent implements OnInit {
 
   login(username, password) {
     this.userLogin.password = password;
-    this.userLogin.username = username;
-
+    this.userLogin.login = username;
     this.authService.login(this.userLogin)
       .subscribe(result => {
         // Store the token
