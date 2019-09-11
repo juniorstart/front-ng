@@ -7,29 +7,36 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item *ngFor="let project of projects" (click)="selected.emit(project)">
-        <h3 mat-line>
+        <h2 mat-line>
           {{project.companyName}}
-        </h3>
+        </h2>
         <p mat-line>
-          {{project.city}}
+          <span> City: </span>
+          <span class="bold"> {{project.city}} </span>
         </p>
         <p mat-line>
-          {{project.workPlace}}
+          <span> Workplace: </span>
+          <span class="bold"> {{project.workPlace}}</span>
+        </p>
+        <p mat-line *ngIf="project.dateOfCompanyReply">
+          <span> Date of company reply: </span>
+          <span class="bold"> {{project.dateOfCompanyReply}}</span>
         </p>
         <p mat-line>
-          {{project.dateOfCompanyReply}}
+          <span> Application date: </span>
+          <span class="bold"> {{project.applicationDate}}</span>
         </p>
         <p mat-line>
-          {{project.applicationDate}}
+          <span> Company reply: </span>
+          <span class="bold"> {{project.companyReply}}</span>
         </p>
         <p mat-line>
-          {{project.companyReply}}
+          <span> Notes: </span>
+          <span class="bold"> {{project.notes}}</span>
         </p>
-        <p mat-line>
-          {{project.notes}}
-        </p>
-        <p mat-line>
-          {{project.linkToApplication}}
+        <p mat-line *ngIf="project.linkToApplication">
+          <span> Link to application: </span>
+          <span class="bold"> {{project.linkToApplication}}</span>
         </p>
 
         <button *ngIf="!readonly" mat-icon-button (click)="deleted.emit(project);$event.stopImmediatePropagation();">
