@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { Project } from '../interfaces/project';
 
 const BASE_URL = "http://localhost:5001/api/recruitment/";
-
 
 @Injectable({
   providedIn: 'root'
@@ -20,29 +20,29 @@ export class RecruitmentInfoService {
   };
 
 
-  getUrl(id) {
+  getUrl(id:Number) {
     return `${BASE_URL}${id}`;
   }
 
   all() {
-    return this.httpClient.get(BASE_URL,this.httpOptions);
+    return this.httpClient.get(BASE_URL);
   }
 
-  create(project) {
+  create(project : Project) {
     project.ownerId = 1;
     if(project.applicationDate == null){
-      project.applicationDate = new Date().toLocaleDateString();
+      project.applicationDate = new Date();
     }
     if(project.id == null){
       project.id = 1;
     }
-    return this.httpClient.post(BASE_URL, project,this.httpOptions);
+    return this.httpClient.post(BASE_URL, project);
   }
 
-  delete(projectId) {
-    return this.httpClient.delete(this.getUrl(projectId),this.httpOptions);
+  delete(projectId:Number) {
+    return this.httpClient.delete(this.getUrl(projectId));
   }
-  update(project){
-    return this.httpClient.put(this.getUrl(project.id),project,this.httpOptions);
+  update(project:Project){
+    return this.httpClient.put(this.getUrl(project.id),project);
   }
 }

@@ -8,10 +8,11 @@ import { MaterialModule } from 'projects/material/src/public-api';
 import { TodolistsModule } from './todolists/todolists.module';
 import { RecruitmentInfoModule } from './recruitment-info/recruitment-info.module';
 import { UiToolbarModule } from 'projects/ui-toolbar/src/public-api';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UiLoginModule } from 'projects/ui-login/src/public-api';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { RequestInterceptor } from './interceptors/requestInterceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,11 @@ import { AuthGuardService } from './guards/auth-guard.service';
     UiToolbarModule,
     UiLoginModule
   ],
-  providers: [CookieService,AuthGuardService],
+  providers: [CookieService,AuthGuardService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: RequestInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
