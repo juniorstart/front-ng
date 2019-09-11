@@ -9,8 +9,8 @@ export class AppComponent {
   title = 'junior-start';
 
   links = [
-    { path: '/login', icon: 'user', label: 'Login' },
-    { path: '/', icon: 'home', label: 'Home' },
+    { path: '/login', icon: 'person', label: 'Login' },
+    { path: '/', icon: 'home', label: 'Recruitment info' },
+    { path: '/todo', icon: 'list', label: 'Todo list' },
   ];
-
 }

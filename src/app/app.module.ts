@@ -5,13 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'projects/material/src/public-api';
-import { HomeModule } from './home/home.module';
 import { TodolistsModule } from './todolists/todolists.module';
 import { RecruitmentInfoModule } from './recruitment-info/recruitment-info.module';
 import { UiToolbarModule } from 'projects/ui-toolbar/src/public-api';
 import { HttpClientModule } from '@angular/common/http';
 import { UiLoginModule } from 'projects/ui-login/src/public-api';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthGuardService } from './guards/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -24,12 +24,12 @@ import { CookieService } from 'ngx-cookie-service';
     RecruitmentInfoModule,
     HttpClientModule,
     MaterialModule,
-    HomeModule,
+    RecruitmentInfoModule,
     TodolistsModule,
     UiToolbarModule,
     UiLoginModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,9 +16,19 @@ export class AuthenticationService {
   }
 
   login(data){
+    console.log(data);
     return this.httpClient.post(BASE_URL + 'login',data);
   }
   register(data){
     return this.httpClient.post(BASE_URL + 'register',data);
+  }
+  isAuthenticated(){
+    var token = this.cookies.get('jwt');
+    if(token){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 }
