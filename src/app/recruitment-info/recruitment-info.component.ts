@@ -41,13 +41,23 @@ export class RecruitmentInfoComponent implements OnInit {
   getProjects() {
     //this.projects$ = this.projectsService.all();
     this.projects$ = this.recruitmentInfoService.all();
-  }
-  saveProject(project) {
-    if(!project.id) {
-      this.createProject(project);
+    
+    if(this.projects$ === null){
+      this.projects$ = this.resetProject();
     }
   }
-
+  saveProject(project) {
+    
+    if(!project.id) {
+      this.recruitmentInfoService.create(project).subscribe(result=>this.getProjects());
+    }
+    else{
+      this.recruitmentInfoService.update(project).subscribe(result=>this.getProjects());
+    }
+  }
+  updateProject(project){
+    this.recruitmentInfoService.update(project).subscribe(result=> this.getProjects());
+  }
   createProject(project) {
     this.recruitmentInfoService.create(project)
       .subscribe(result => {

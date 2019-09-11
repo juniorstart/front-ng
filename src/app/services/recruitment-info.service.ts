@@ -15,7 +15,7 @@ export class RecruitmentInfoService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Authorization': this.cookies.get('jwt')
+      'Authorization': 'Bearer ' + this.cookies.get('jwt').split('"')[1]
     })
   };
 
@@ -29,10 +29,20 @@ export class RecruitmentInfoService {
   }
 
   create(project) {
+    project.ownerId = 1;
+    if(project.applicationDate == null){
+      project.applicationDate = new Date().toLocaleDateString();
+    }
+    if(project.id == null){
+      project.id = 1;
+    }
     return this.httpClient.post(BASE_URL, project,this.httpOptions);
   }
 
   delete(projectId) {
     return this.httpClient.delete(this.getUrl(projectId),this.httpOptions);
+  }
+  update(project){
+    return this.httpClient.put(this.getUrl(project.id),project,this.httpOptions);
   }
 }
