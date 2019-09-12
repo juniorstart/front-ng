@@ -7,9 +7,9 @@ import { TodolistsComponent } from './todolists/todolists.component';
 
 
 const routes: Routes = [
-  {path: 'login', component: UiLoginComponent},
-  {path:'', component:RecruitmentInfoComponent, canActivate:[AuthGuardService]},
-  {path:'todo', component:TodolistsComponent, canActivate:[AuthGuardService]}
+  {path: 'login', component: UiLoginComponent,data: { animation: 'home' }},
+  {path:'', component:RecruitmentInfoComponent, canActivate:[AuthGuardService],data: { animation: 'recruitmentInfo' }},
+  {path:'todo', component:TodolistsComponent, canActivate:[AuthGuardService],data: { animation: 'todo' }}
 ];
 
 @NgModule({
