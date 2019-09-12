@@ -12,14 +12,6 @@ export class RecruitmentInfoService {
 
   constructor(private httpClient: HttpClient,private cookies: CookieService) { }
   
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'Bearer ' + this.cookies.get('jwt').split('"')[1]
-    })
-  };
-
-
   getUrl(id:Number) {
     return `${BASE_URL}${id}`;
   }
