@@ -1,10 +1,10 @@
 <div class="container">
-        <div class="col-50">
-          <app-todolist-list
-          [todoLists]="todolists$ | async"></app-todolist-list>
-        </div>
-        <div class="col-50">
-          <app-todolist-form
-          [todoLists]="todolists$ | async"></app-todolist-form>
-        </div>
-      </div>
+  <div class="col-50">
+    <app-todolist-list [todoLists]="todolists$ | async"></app-todolist-list>
+  </div>
+  <div class="col-50">
+      <app-add-todo-list-form>
+        </app-add-todo-list-form>
+        <app-add-task-form [todoLists]="todolists$ | async"></app-add-task-form>
+  </div>
+</div>

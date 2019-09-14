@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { TaskInterface } from 'src/app/interfaces/taskInterface';
 
 @Component({
   selector: 'app-single-task',
   templateUrl: './single-task.component.html',
   styleUrls: ['./single-task.component.scss']
 })
-export class SingleTaskComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class SingleTaskComponent {
+  @Input() task: TaskInterface[];
 }

@@ -1,1 +1,13 @@
-<p>single-task works!</p>
+<mat-list-item>
+    <p mat-line>
+        <span class="bold"> {{task.description}} </span>
+    </p>
+    <section>
+        <mat-checkbox [(ngModel)]="task.status" name="status">Done?</mat-checkbox>
+    </section>
+    <section>
+        <button mat-icon-button (click)="deleted.emit(project);$event.stopImmediatePropagation();">
+            <mat-icon>close</mat-icon>
+        </button>
+    </section>
+</mat-list-item>
