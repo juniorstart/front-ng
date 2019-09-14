@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 import { TodoListInterface } from 'src/app/interfaces/todolistInterface';
 
 @Component({
-  selector: 'app-todolist-form',
-  templateUrl: './todolist-form.component.html',
-  styleUrls: ['./todolist-form.component.scss']
+  selector: 'app-add-task-form',
+  templateUrl: './add-task-form.component.html',
+  styleUrls: ['./add-task-form.component.scss']
 })
-export class TodolistFormComponent {
+export class AddTaskFormComponent {
   @Input() todoLists: TodoListInterface[];
 }

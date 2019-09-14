@@ -1,29 +1,5 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            <h1>
-               
-            </h1>
-        </mat-card-title>
-    </mat-card-header>
-    <form>
-        <mat-card-content>
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Company name" type="text" name="companyName">
-            </mat-form-field>
-            <mat-form-field class="full-width">
-                <input matInput placeholder="City" type="text" name="city">
-            </mat-form-field>
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Workplace" type="text" name="workplace">
-            </mat-form-field>
-            <mat-form-field class="full-width">
-                <textarea matInput placeholder="Details" type="text" name="details"></textarea>
-            </mat-form-field>
-        </mat-card-content>
-        <mat-card-actions>
-            <button type="submit" mat-button color="primary">Create</button>
-            <button type="button" mat-button (click)="cancelled.emit(currentProject)">Cancel</button>
-        </mat-card-actions>
-    </form>
-</mat-card>
+<app-add-todo-list-form
+>
+</app-add-todo-list-form>
+<app-add-task-form
+[todoLists]="todolists"></app-add-task-form>

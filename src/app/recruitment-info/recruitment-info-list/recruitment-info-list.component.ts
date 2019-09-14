@@ -8,8 +8,6 @@ import { Project } from '../../interfaces/project';
 })
 export class RecruitmentInfoListComponent {
   @Input() projects: Project[];
-  @Input() readonly = false;
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();
-
 }

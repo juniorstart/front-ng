@@ -10,7 +10,7 @@ const BASE_URL = "http://localhost:5001/api/recruitment/";
 })
 export class RecruitmentInfoService {
 
-  constructor(private httpClient: HttpClient,private cookies: CookieService) { }
+  constructor(private httpClient: HttpClient) { }
   
   getUrl(id:Number) {
     return `${BASE_URL}${id}`;

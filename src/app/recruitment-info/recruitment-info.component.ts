@@ -18,7 +18,7 @@ export class RecruitmentInfoComponent implements OnInit {
     this.getProjects();
     this.resetProject();
   }
-  selectProject(project) {
+  selectProject(project:Project) {
     this.selectedProject = project;
   }
 
@@ -39,14 +39,13 @@ export class RecruitmentInfoComponent implements OnInit {
   }
 
   getProjects() {
-    //this.projects$ = this.projectsService.all();
     this.projects$ = this.recruitmentInfoService.all();
     
     if(this.projects$ === null){
       this.projects$ = this.resetProject();
     }
   }
-  saveProject(project) {
+  saveProject(project:Project) {
     
     if(!project.id) {
       this.recruitmentInfoService.create(project).subscribe(result=>this.getProjects());
@@ -55,17 +54,17 @@ export class RecruitmentInfoComponent implements OnInit {
       this.recruitmentInfoService.update(project).subscribe(result=>this.getProjects());
     }
   }
-  updateProject(project){
+  updateProject(project:Project){
     this.recruitmentInfoService.update(project).subscribe(result=> this.getProjects());
   }
-  createProject(project) {
+  createProject(project:Project) {
     this.recruitmentInfoService.create(project)
       .subscribe(result => {
         this.getProjects();
         this.resetProject();
       });
   }
-  deleteProject(project) {
+  deleteProject(project:Project) {
     this.recruitmentInfoService.delete(project.id)
       .subscribe(result => this.getProjects());
   }

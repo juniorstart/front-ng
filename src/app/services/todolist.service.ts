@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
 import { TodoListInterface } from '../interfaces/todolistInterface';
 import { TaskInterface } from '../interfaces/taskInterface';
 
@@ -11,7 +10,7 @@ const BASE_URL = 'http://localhost:5001/api/todolists/';
 })
 export class TodolistService {
 
-  constructor(private httpClient: HttpClient,private cookies: CookieService) { }
+  constructor(private httpClient: HttpClient) { }
 
   getUrl(td:boolean,withId:boolean,id?:Number){
     return `${BASE_URL}${td?'todolist':'task'}/${withId? `${id}` : ''}${id}`;
@@ -31,5 +30,4 @@ export class TodolistService {
   addTask(item:TaskInterface){
     return this.httpClient.post(this.getUrl(false,false),item);
   }
-
 }
