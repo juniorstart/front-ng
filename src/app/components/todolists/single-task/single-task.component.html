@@ -3,7 +3,7 @@
         <span class="bold"> {{task.description}} </span>
     </p>
     <section>
-        <mat-checkbox [(ngModel)]="task.status" name="status">Done?</mat-checkbox>
+        <mat-checkbox [(ngModel)]="task.status" (ngModelChange)="statusChange.emit($event)" name="status">Done?</mat-checkbox>
     </section>
     <section>
         <button mat-icon-button (click)="deleted.emit(project);$event.stopImmediatePropagation();">

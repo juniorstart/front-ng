@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="col-50">
+    <app-todolist-list 
+    [todoLists]="todolists$ | async"
+    (notify)="onNotify($event)"
+    (delete)="deleteTask($event)"></app-todolist-list>
+  </div>
+  <div class="col-50">
+      <app-add-todo-list-form
+      (addedTodo)="addTodoList($event)">
+        </app-add-todo-list-form>
+        <app-add-task-form 
+        [todoLists]="todolists$ | async"
+        (saved)="addTask($event)"></app-add-task-form>
+  </div>
+</div>

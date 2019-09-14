@@ -3,21 +3,21 @@ import { CommonModule } from '@angular/common';
 import { TodolistsRoutingModule } from './todolists-routing.module';
 import { TodolistsComponent } from './todolists.component';
 import { TodolistListComponent } from './todolist-list/todolist-list.component';
-import { TodolistFormComponent } from './todolist-form/todolist-form.component';
 import { MaterialModule } from 'projects/material/src/public-api';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { SingleTaskComponent } from './single-task/single-task.component';
 import { AddTodoListFormComponent } from './add-todo-list-form/add-todo-list-form.component';
 import { AddTaskFormComponent } from './add-task-form/add-task-form.component';
 
 
 @NgModule({
-  declarations: [TodolistsComponent, TodolistListComponent, TodolistFormComponent, SingleTaskComponent, AddTodoListFormComponent, AddTaskFormComponent],
+  declarations: [TodolistsComponent, TodolistListComponent, SingleTaskComponent, AddTodoListFormComponent, AddTaskFormComponent],
   imports: [
     CommonModule,
     TodolistsRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class TodolistsModule { }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Project } from '../../interfaces/project';
+import { Project } from '../../../interfaces/project';
 
 @Component({
   selector: 'app-recruitment-info-details',

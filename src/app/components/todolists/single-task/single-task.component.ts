@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output,EventEmitter } from '@angular/core';
 import { TaskInterface } from 'src/app/interfaces/taskInterface';
 
 @Component({
@@ -8,4 +8,6 @@ import { TaskInterface } from 'src/app/interfaces/taskInterface';
 })
 export class SingleTaskComponent {
   @Input() task: TaskInterface[];
+  @Output() statusChange = new EventEmitter();
+  @Output() deleted = new EventEmitter();
 }

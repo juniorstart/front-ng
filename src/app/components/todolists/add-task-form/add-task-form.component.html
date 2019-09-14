@@ -6,23 +6,22 @@
             </h2>
         </mat-card-title>
     </mat-card-header>
-    <form>
+    <form [formGroup]="profileForm" (ngSubmit)="saved.emit(profileForm.value)">
         <mat-card-content>
             <mat-form-field class="full-width">
                 <mat-label>Todo list</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let todolist of todoLists" [value]="todolist.id">
+                <mat-select formControlName="todolistId">
+                    <mat-option *ngFor="let todolist of todoLists" [value]="todolist.id"  name="todolistId">
                         {{todolist.name}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field class="full-width">
-                <input matInput placeholder="Description" type="text" name="Description">
+                <input matInput placeholder="Description" type="text" formControlName="description" name="description">
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
-            <button type="submit" mat-button color="primary">Create</button>
-            <button type="button" mat-button (click)="cancelled.emit(currentProject)">Cancel</button>
+                <button type="submit" mat-button color="primary">Create</button>
         </mat-card-actions>
     </form>
 </mat-card>

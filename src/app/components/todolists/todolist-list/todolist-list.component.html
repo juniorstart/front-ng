@@ -17,11 +17,13 @@
                 </mat-expansion-panel-header>
                 <mat-card-content>
                     <mat-list>
-                        <app-single-task *ngFor="let task of todolist.tasks" [task]="task">{{task || json}}</app-single-task>
+                        <app-single-task *ngFor="let task of todolist.tasks" 
+                        (statusChange)=ChangeStatus(task) 
+                        [task]="task"
+                        (deleted)=Delete(task)></app-single-task>
                     </mat-list>
                 </mat-card-content>
             </mat-expansion-panel>
-
         </mat-list>
     </mat-card-content>
 </mat-card>
