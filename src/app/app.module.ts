@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'projects/material/src/public-api';
-import { TodolistsModule } from './todolists/todolists.module';
-import { RecruitmentInfoModule } from './recruitment-info/recruitment-info.module';
+import { TodolistsModule } from './components/todolists/todolists.module';
+import { RecruitmentInfoModule } from './components/recruitment-info/recruitment-info.module';
 import { UiToolbarModule } from 'projects/ui-toolbar/src/public-api';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UiLoginModule } from 'projects/ui-login/src/public-api';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { RequestInterceptor } from './interceptors/requestInterceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,9 @@ import { RequestInterceptor } from './interceptors/requestInterceptor';
     RecruitmentInfoModule,
     TodolistsModule,
     UiToolbarModule,
-    UiLoginModule
+    UiLoginModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [CookieService,AuthGuardService,{
     provide: HTTP_INTERCEPTORS,
