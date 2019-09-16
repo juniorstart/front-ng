@@ -26,8 +26,7 @@ export class TodolistsComponent implements OnInit {
       this.todolists$ = this.todolistService.getall();
   }
   onNotify(item){
-    console.log(item);
-    this.todolistService.updateTask(item).subscribe(result=>this.getTodoLists());
+    this.todolistService.updateTask(item).subscribe(result=>result);
   }
   addTodoList(item){
     this.prepareData.prepareTodoListData(item.name).subscribe(result=>this.getTodoLists());
@@ -37,6 +36,6 @@ export class TodolistsComponent implements OnInit {
     this.todolistService.addTask(item).subscribe(result=>this.getTodoLists());
   }
   deleteTask(item:TaskInterface){
-    this.todolistService.deleteTask(item.id).subscribe(result=>this.getTodoLists());
+    this.todolistService.deleteTask(item.id).subscribe(result=>result);
   }
 }

@@ -6,7 +6,8 @@
     </mat-card-header>
     <mat-card-content>
         <mat-list>
-            <mat-expansion-panel *ngFor="let todolist of todoLists">
+            <mat-expansion-panel *ngFor="let todolist of todoLists;trackBy:trackByFunc" >
+                {{trackByIndex}}
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         {{todolist.name}}

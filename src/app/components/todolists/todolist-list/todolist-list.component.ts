@@ -15,8 +15,14 @@ export class TodolistListComponent  {
   @Output() notify: EventEmitter<TaskInterface> = new EventEmitter();
   @Output() delete: EventEmitter<TaskInterface> = new EventEmitter();
 
+  trackByFunc(index,item){
+    if(!item) return null;
+    return item.id;
+  }
+
   Delete(task:TaskInterface){
     this.delete.emit(task);
+    
   }
   ChangeStatus(task:TaskInterface){
     this.notify.emit(task);
