@@ -9,7 +9,16 @@ import { Router } from '@angular/router';
 })
 export class UiLoginComponent implements OnInit {
   userLogin = { login: '', password: ''};
-
+  userRegister = { 
+    user:{
+      id:1,
+      firstName: '',
+      lastName: '',
+      email: '',
+      login: '',
+      password: ''
+    }
+  }
   constructor(private router: Router, private authService: AuthenticationService) { }
 
   ngOnInit() {
@@ -25,6 +34,11 @@ export class UiLoginComponent implements OnInit {
         // Redirect to home
         this.router.navigate(['']);
       });
+  }
+  register(){
+    console.log(this.userRegister);
+    this.authService.register(this.userRegister)
+      .subscribe(result=> this.login(this.userRegister.user.login,this.userRegister.user.password));
   }
 
 }
