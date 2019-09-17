@@ -36,7 +36,6 @@ export class UiLoginComponent implements OnInit {
       });
   }
   register(){
-    console.log(this.userRegister);
     this.authService.register(this.userRegister)
       .subscribe(result=> this.login(this.userRegister.user.login,this.userRegister.user.password));
   }

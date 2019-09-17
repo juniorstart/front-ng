@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginInterface } from '../interfaces/loginInterface';
 import { RegisterInterface } from '../interfaces/registerInterface';
+import { Router } from '@angular/router';
 
 const BASE_URL = "http://localhost:5001/";
 
@@ -11,7 +12,7 @@ const BASE_URL = "http://localhost:5001/";
 })
 export class AuthenticationService {
 
-  constructor(private httpClient: HttpClient,private cookies: CookieService) { }
+  constructor(private httpClient: HttpClient,private cookies: CookieService,private _router: Router) { }
 
   setToken(token:string){
     this.cookies.set('jwt', token);
@@ -25,6 +26,10 @@ export class AuthenticationService {
     return this.httpClient.post(BASE_URL + 'register',data);
   }
   isAuthenticated(){
-    return this.cookies.get('jwt') !== null; 
+    return this.cookies.get('jwt').length > 0;
+  }
+  logout(){
+      this.cookies.delete('jwt');
+      this._router.navigate(['/login']);
   }
 }
