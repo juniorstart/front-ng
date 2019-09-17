@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoginInterface } from '../interfaces/loginInterface';
 import { RegisterInterface } from '../interfaces/registerInterface';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 const BASE_URL = "http://localhost:5001/";
 
@@ -19,7 +20,6 @@ export class AuthenticationService {
   }
 
   login(data: LoginInterface){
-    console.log(data);
     return this.httpClient.post(BASE_URL + 'login',data);
   }
   register(data: RegisterInterface){

@@ -4,6 +4,7 @@ import { TaskInterface } from '../../interfaces/taskInterface';
 import { TodolistService } from '../../services/todolist.service';
 import { AddTaskInterface } from '../../interfaces/addTaskInterface';
 import { TodolistsdataproviderService } from 'src/app/data-providers/todolistsdataprovider.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-todolists',
@@ -16,7 +17,7 @@ export class TodolistsComponent implements OnInit {
   TaskToAdd: AddTaskInterface;
   todolists$;
   updateTask;
-  constructor(private todolistService:TodolistService,private prepareData:TodolistsdataproviderService) { }
+  constructor(private todolistService:TodolistService,private prepareData:TodolistsdataproviderService,private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getTodoLists();
@@ -27,15 +28,19 @@ export class TodolistsComponent implements OnInit {
   }
   onNotify(item){
     this.todolistService.updateTask(item).subscribe(result=>result);
+    this.toastr.success("Task updated");
   }
   addTodoList(item){
     this.prepareData.prepareTodoListData(item.name).subscribe(result=>this.getTodoLists());
+    this.toastr.success("TodoList added");
   }
 
   addTask(item:AddTaskInterface){
     this.todolistService.addTask(item).subscribe(result=>this.getTodoLists());
+    this.toastr.success("Task added");
   }
   deleteTask(item:TaskInterface){
-    this.todolistService.deleteTask(item.id).subscribe(result=>result);
+    this.todolistService.deleteTask(item.id).subscribe(result=>this.getTodoLists());
+    this.toastr.success("Task deleted");
   }
 }

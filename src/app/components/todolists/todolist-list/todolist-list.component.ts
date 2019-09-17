@@ -22,7 +22,6 @@ export class TodolistListComponent  {
 
   Delete(task:TaskInterface){
     this.delete.emit(task);
-    
   }
   ChangeStatus(task:TaskInterface){
     this.notify.emit(task);
