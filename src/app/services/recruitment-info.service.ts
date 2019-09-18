@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../interfaces/project';
+import { Observable } from 'rxjs';
+import { TaskInterface } from '../interfaces/taskInterface';
+import { Pipe } from '@angular/compiler/src/core';
+import { AsyncPipe } from '@angular/common';
 
 const BASE_URL = "http://localhost:5001/api/recruitment/";
 
@@ -11,15 +15,16 @@ export class RecruitmentInfoService {
 
   constructor(private httpClient: HttpClient) { }
   
-  getUrl(id:Number) {
+  getUrl(id:number):string {
     return `${BASE_URL}${id}`;
   }
 
-  all() {
+  all():Observable<any> {
+    console.log(this.httpClient.get(BASE_URL));
     return this.httpClient.get(BASE_URL);
   }
 
-  create(project : Project) {
+  create(project : Project):Observable<any> {
     project.ownerId = 1;
     if(project.applicationDate == null){
       project.applicationDate = new Date();
@@ -30,7 +35,7 @@ export class RecruitmentInfoService {
     return this.httpClient.post(BASE_URL, project);
   }
 
-  delete(projectId:Number) {
+  delete(projectId:number) {
     return this.httpClient.delete(this.getUrl(projectId));
   }
   update(project:Project){

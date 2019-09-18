@@ -14,6 +14,9 @@ import { AuthGuardService } from './guards/auth-guard.service';
 import { RequestInterceptor } from './interceptors/requestInterceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginModule } from './components/login/login.module';
+import { RegisterModule } from './components/register/register.module';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { ToastrModule } from 'ngx-toastr';
     RecruitmentInfoModule,
     TodolistsModule,
     UiToolbarModule,
-    UiLoginModule,
+    LoginModule,
+    RegisterModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot()

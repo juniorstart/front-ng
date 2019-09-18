@@ -12,6 +12,7 @@ export class AppComponent  {
 
   links = [
     { path: '/login', icon: 'person', label: 'Login' },
+    { path: '/register', icon: 'person', label: 'Register' },
     { path: '/', icon: 'home', label: 'Recruitment info' },
     { path: '/todo', icon: 'list', label: 'Todo list' },
   ];
