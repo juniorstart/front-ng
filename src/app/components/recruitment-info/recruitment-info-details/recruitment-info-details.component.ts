@@ -8,9 +8,9 @@ import { Project } from '../../../interfaces/project';
 })
 export class RecruitmentInfoDetailsComponent {
   currentProject: Project;
-  originalTitle;
-  newDateOfCompanyReply;
-  newApplicationDate;
+  originalTitle:string;
+  newDateOfCompanyReply: Date;
+  newApplicationDate: Date;
   @Output() saved = new EventEmitter();
   @Output() cancelled = new EventEmitter();
 

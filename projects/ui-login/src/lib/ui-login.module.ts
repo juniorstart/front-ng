@@ -5,9 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from 'projects/material/src/public-api';
 import { Route, RouterModule } from '@angular/router';
 
-export const uiLoginRoutes: Route[] = [
-  { path: 'login', component: UiLoginComponent }
-];
 
 @NgModule({
   declarations: [UiLoginComponent],

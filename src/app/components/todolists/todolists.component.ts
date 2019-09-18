@@ -5,6 +5,7 @@ import { TodolistService } from '../../services/todolist.service';
 import { AddTaskInterface } from '../../interfaces/addTaskInterface';
 import { TodolistsdataproviderService } from 'src/app/data-providers/todolistsdataprovider.service';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todolists',

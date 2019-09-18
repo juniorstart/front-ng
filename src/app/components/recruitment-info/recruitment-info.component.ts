@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {RecruitmentInfoService } from '../../services/recruitment-info.service';
 import { Project } from '../../interfaces/project';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recruitment-info',

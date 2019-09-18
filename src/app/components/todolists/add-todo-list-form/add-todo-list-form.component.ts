@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -6,10 +6,13 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './add-todo-list-form.component.html',
   styleUrls: ['./add-todo-list-form.component.scss']
 })
-export class AddTodoListFormComponent {
+export class AddTodoListFormComponent implements OnInit{
   @Output() addedTodo = new EventEmitter();
-
-  addTodoList = new FormGroup({
-    name: new FormControl(''),
-  });
+  addTodoList:FormGroup;
+  
+  ngOnInit(){
+     this.addTodoList = new FormGroup({
+      name: new FormControl(''),
+    });
+  }
 }

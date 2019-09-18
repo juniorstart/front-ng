@@ -8,12 +8,15 @@ import { FormControl,FormGroup} from '@angular/forms';
   styleUrls: ['./add-task-form.component.scss']
 })
 
-export class AddTaskFormComponent {
+export class AddTaskFormComponent implements OnInit{
   @Input() todoLists: TodoListInterface[];
   @Output() saved = new EventEmitter();
-  
-  profileForm = new FormGroup({
-    description: new FormControl(''),
-    todolistId: new FormControl('')
-  });
+  profileForm:FormGroup;
+
+  ngOnInit(){
+    this.profileForm = new FormGroup({
+      description: new FormControl(''),
+      todolistId: new FormControl('')
+    });
+  }
 }
