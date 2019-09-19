@@ -14,7 +14,7 @@ export class UiToolbarComponent {
 
   constructor(private authService: AuthenticationService,private toastr: ToastrService) { }
 
-  @Input() isLoggedIn: boolean;
+  @Input() isLogged: boolean;
   @Input() title: string;
   @Input() sidenav: MatSidenav;
 
@@ -22,4 +22,5 @@ export class UiToolbarComponent {
     this.authService.logout();
     this.toastr.success("logged out");
   }
+
 }

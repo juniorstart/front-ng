@@ -1,14 +1,21 @@
 
-<lib-ui-toolbar [title]="title" [sidenav]="sidenav"></lib-ui-toolbar>
+<lib-ui-toolbar [isLogged]="isLogged()" [title]="title" [sidenav]="sidenav"></lib-ui-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
-    <nav>
-      <a mat-button class="nav-link" *ngFor="let link of links"
+    <nav *ngIf="!isLogged()">
+      <a mat-button class="nav-link" *ngFor="let link of linksWithoutLogin"
         [routerLink]="link.path" routerLinkActive="active">
         <mat-icon>{{link.icon}}</mat-icon>
         {{link.label}}
       </a>
+    </nav>
+    <nav *ngIf="isLogged()">
+      <a mat-button class="nav-link" *ngFor="let link of linksWithLogin"
+      [routerLink]="link.path" routerLinkActive="active">
+      <mat-icon>{{link.icon}}</mat-icon>
+      {{link.label}}
+    </a>
     </nav>
   </mat-sidenav>
 

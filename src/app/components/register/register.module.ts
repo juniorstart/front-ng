@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
 import { MaterialModule } from 'projects/material/src/public-api';
 
@@ -10,7 +10,8 @@ import { MaterialModule } from 'projects/material/src/public-api';
   entryComponents:[RegisterComponent],
   imports: [
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[RegisterComponent]
 })

@@ -7,5 +7,5 @@
         {{title}}
       </span>
     </span>
-    <button (click)="logout()" class="logout" mat-fab>Logout</button>
+    <button *ngIf="isLogged" (click)="logout()" class="logout" mat-fab>Logout</button>
   </mat-toolbar>

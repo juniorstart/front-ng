@@ -5,6 +5,7 @@ import { LoginInterface } from '../interfaces/loginInterface';
 import { RegisterInterface } from '../interfaces/registerInterface';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 const BASE_URL = "http://localhost:5001/";
 
@@ -15,20 +16,20 @@ export class AuthenticationService {
 
   constructor(private httpClient: HttpClient,private cookies: CookieService,private _router: Router) { }
 
-  setToken(token:string){
+  setToken(token:string):void{
     this.cookies.set('jwt', token);
   }
 
-  login(data: LoginInterface){
-    return this.httpClient.post(BASE_URL + 'login',data);
+  login(data: LoginInterface):Observable<string>{
+    return this.httpClient.post<string>(BASE_URL + 'login',data);
   }
-  register(data: RegisterInterface){
-    return this.httpClient.post(BASE_URL + 'register',data);
+  register(data: RegisterInterface):Observable<boolean>{
+    return this.httpClient.post<boolean>(BASE_URL + 'register',data);
   }
-  isAuthenticated(){
+  isAuthenticated():boolean{
     return this.cookies.get('jwt').length > 0;
   }
-  logout(){
+  logout():void{
       this.cookies.delete('jwt');
       this._router.navigate(['/login']);
   }

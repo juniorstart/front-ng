@@ -6,22 +6,22 @@
             <h2>Register</h2>
           </mat-card-title>
         </mat-card-header>
-        <form (submit)="register()">
+        <form [formGroup]="_registerForm" (submit)="register(_registerForm.value)">
           <mat-card-content>
             <mat-form-field>
-              <input matInput placeholder="Login" [(ngModel)]="userRegister.user.login" type="text" name="login">
+              <input matInput placeholder="Login" formControlName="login" type="text" name="login">
             </mat-form-field>
             <mat-form-field>
-              <input matInput placeholder="Password" [(ngModel)]="userRegister.user.password" type="password" name="password">
+              <input matInput placeholder="Password" formControlName="password" type="password" name="password">
             </mat-form-field>
             <mat-form-field>
-              <input matInput placeholder="Firstname" [(ngModel)]="userRegister.user.firstName" type="text" name="firstname">
+              <input matInput placeholder="Firstname" formControlName="firstname" type="text" name="firstname">
             </mat-form-field>
             <mat-form-field>
-              <input matInput placeholder="Lastname" [(ngModel)]="userRegister.user.lastName" type="text" name="lastname">
+              <input matInput placeholder="Lastname" formControlName="lastname" type="text" name="lastname">
             </mat-form-field>
             <mat-form-field>
-              <input matInput placeholder="Email" [(ngModel)]="userRegister.user.email" type="text" name="email">
+              <input matInput placeholder="Email" formControlName="email" type="text" name="email">
             </mat-form-field>
           </mat-card-content>
           <mat-card-actions>

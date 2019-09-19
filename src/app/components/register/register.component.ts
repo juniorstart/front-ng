@@ -16,9 +16,8 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router, private authService: AuthenticationService,private toastr: ToastrService) { }
 
   _registerForm:FormGroup;
-  _userRegister:RegisterInterface;
   _userLogin:LoginInterface;
-
+  _userRegister:RegisterInterface;
   ngOnInit() {
     this._registerForm = new FormGroup({
       login: new FormControl(''),
@@ -29,9 +28,10 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  register(){
-    this._userLogin = this._registerForm.value['login'];
-    this._userLogin = this._registerForm.value['password'];
+  register(registerForm:FormGroup){
+    this._userLogin = registerForm.value['login'];
+    this._userLogin = registerForm.value['password'];
+    //zrobić data-providera przed serwisem
     this.authService.register(this._userRegister)
       .subscribe(
         result=> this.authService.login(this._userLogin),

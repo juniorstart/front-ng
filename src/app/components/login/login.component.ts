@@ -16,15 +16,17 @@ export class LoginComponent implements OnInit {
 
   _loginForm:FormGroup;
   _userLogin:LoginInterface;
+
   ngOnInit(){
     this._loginForm = new FormGroup({
       username: new FormControl(''),
       password: new FormControl('')
     });
   }
-  login(username:string, password:string) {
-    this._userLogin.password = password;
-    this._userLogin.login = username;
+
+  login(loginForm:FormGroup) {
+    this._userLogin.password = loginForm['password'];
+    this._userLogin.login = loginForm['username'];
     this.authService.login(this._userLogin)
       .subscribe(result => {
         // Store the token
