@@ -41,7 +41,7 @@ export class TodolistsComponent implements OnInit {
     this.toastr.success("Task added");
   }
   deleteTask(item:TaskInterface){
-    this.todolistService.deleteTask(item.id).subscribe(result=>this.getTodoLists());
+    this.todolistService.deleteTask(item.id);
     this.toastr.success("Task deleted");
   }
 }

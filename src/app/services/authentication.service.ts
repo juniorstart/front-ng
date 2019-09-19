@@ -4,7 +4,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoginInterface } from '../interfaces/loginInterface';
 import { RegisterInterface } from '../interfaces/registerInterface';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 
 const BASE_URL = "http://localhost:5001/";

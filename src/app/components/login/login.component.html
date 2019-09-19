@@ -6,10 +6,10 @@
             <h2>Login</h2>
           </mat-card-title>
         </mat-card-header>
-        <form [formGroup]="_loginForm" (submit)="login(_loginForm.value)">
+        <form [formGroup]="_loginForm" (submit)="login()">
           <mat-card-content>
             <mat-form-field>
-              <input matInput placeholder="Login" formControlName="username"  type="text" name="username">
+              <input matInput placeholder="Login" formControlName="login"  type="text" name="login">
             </mat-form-field>
             <mat-form-field>
               <input matInput placeholder="Password" formControlName="password"  type="password" name="password">
