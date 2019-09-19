@@ -7,7 +7,7 @@
       </h1>
     </mat-card-title>
   </mat-card-header>
-  <form (submit)="saved.emit(currentProject)">
+  <form (submit)="save()">
     <mat-card-content>
       <mat-form-field class="full-width">
         <input matInput placeholder="Company name" [(ngModel)]="currentProject.companyName" type="text"
@@ -40,7 +40,7 @@
     <mat-card-actions>
       <button type="submit" mat-button color="primary" *ngIf="currentProject.id">Save</button>
       <button type="submit" mat-button color="primary" *ngIf="!currentProject.id">Create</button>
-      <button type="button" mat-button (click)="cancelled.emit(currentProject)">Cancel</button>
+      <button type="button" mat-button (click)="cancel()">Cancel</button>
     </mat-card-actions>
   </form>
 </mat-card>

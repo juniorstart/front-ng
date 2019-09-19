@@ -1,4 +1,4 @@
-export interface AddTaskInterface {
+export interface AddTask {
     description: string,
     todolistId: Number
   }

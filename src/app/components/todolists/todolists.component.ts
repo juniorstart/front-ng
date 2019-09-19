@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoListInterface } from '../../interfaces/todolistInterface';
-import { TaskInterface } from '../../interfaces/taskInterface';
+import { TodoList } from '../../interfaces/todolist.interface';
+import { Task } from '../../interfaces/task.interface';
 import { TodolistService } from '../../services/todolist.service';
-import { AddTaskInterface } from '../../interfaces/addTaskInterface';
-import { TodolistsdataproviderService } from 'src/app/data-providers/todolistsdataprovider.service';
+import { AddTask } from '../../interfaces/addTask.interface';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { Todolistsdataprovider } from 'src/app/data-providers/todolists.data-provider';
 
 @Component({
   selector: 'app-todolists',
@@ -14,11 +14,12 @@ import { Observable } from 'rxjs';
 })
 export class TodolistsComponent implements OnInit {
 
-  TodoListToAdd: TodoListInterface;
-  TaskToAdd: AddTaskInterface;
+  TodoListToAdd: TodoList;
+  TaskToAdd: AddTask;
   todolists$;
   updateTask;
-  constructor(private todolistService:TodolistService,private prepareData:TodolistsdataproviderService,private toastr: ToastrService) { }
+  
+  constructor(private todolistService:TodolistService,private toastr: ToastrService,private prepareData:Todolistsdataprovider) { }
 
   ngOnInit() {
     this.getTodoLists();
@@ -36,11 +37,11 @@ export class TodolistsComponent implements OnInit {
     this.toastr.success("TodoList added");
   }
 
-  addTask(item:AddTaskInterface){
+  addTask(item:AddTask){
     this.todolistService.addTask(item).subscribe(result=>this.getTodoLists());
     this.toastr.success("Task added");
   }
-  deleteTask(item:TaskInterface){
+  deleteTask(item:Task){
     this.todolistService.deleteTask(item.id);
     this.toastr.success("Task deleted");
   }

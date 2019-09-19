@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { LoginInterface } from '../interfaces/loginInterface';
-import { RegisterInterface } from '../interfaces/registerInterface';
+import { Login } from '../interfaces/login.interface';
+import { Register } from '../interfaces/register.interface';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -19,10 +19,10 @@ export class AuthenticationService {
     this.cookies.set('jwt', token);
   }
 
-  login(data: LoginInterface):Observable<string>{
+  login(data: Login):Observable<string>{
     return this.httpClient.post<string>(BASE_URL + 'login',data);
   }
-  register(data: RegisterInterface):Observable<boolean>{
+  register(data: Register):Observable<boolean>{
     return this.httpClient.post<boolean>(BASE_URL + 'register',data);
   }
   isAuthenticated():boolean{

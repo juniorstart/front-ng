@@ -15,4 +15,7 @@ export class AddTodoListFormComponent implements OnInit{
       name: new FormControl(''),
     });
   }
+  addTodo(){
+    this.addedTodo.emit(this.addTodoList.value);
+  }
 }

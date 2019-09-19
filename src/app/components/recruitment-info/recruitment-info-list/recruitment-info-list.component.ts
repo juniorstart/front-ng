@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Project } from '../../../interfaces/project';
+import { Project } from '../../../interfaces/project.interface';
 
 @Component({
   selector: 'app-recruitment-info-list',
@@ -10,4 +10,8 @@ export class RecruitmentInfoListComponent {
   @Input() projects: Project[];
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();
+
+  delete(project:Project){
+    this.deleted.emit(project);
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, Input, Output,EventEmitter, OnInit } from '@angular/core';
-import { TodoListInterface } from 'src/app/interfaces/todolistInterface';
 import { FormControl,FormGroup} from '@angular/forms';
+import { TodoList } from 'src/app/interfaces/todolist.interface';
 
 @Component({
   selector: 'app-add-task-form',
@@ -9,7 +9,7 @@ import { FormControl,FormGroup} from '@angular/forms';
 })
 
 export class AddTaskFormComponent implements OnInit{
-  @Input() todoLists: TodoListInterface[];
+  @Input() todoLists: TodoList[];
   @Output() saved = new EventEmitter();
   profileForm:FormGroup;
 
@@ -18,5 +18,8 @@ export class AddTaskFormComponent implements OnInit{
       description: new FormControl(''),
       todolistId: new FormControl('')
     });
+  }
+  save(){
+    this.saved.emit(this.profileForm.value);
   }
 }

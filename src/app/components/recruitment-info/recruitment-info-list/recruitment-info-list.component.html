@@ -39,7 +39,7 @@
           <span class="bold"> {{project.linkToApplication}}</span>
         </p>
 
-        <button mat-icon-button (click)="deleted.emit(project);$event.stopImmediatePropagation();">
+        <button mat-icon-button (click)="delete(project);$event.stopImmediatePropagation();">
           <mat-icon>close</mat-icon>
         </button>
       </mat-list-item>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Project } from '../../../interfaces/project';
+import { Project } from '../../../interfaces/project.interface';
 
 @Component({
   selector: 'app-recruitment-info-details',
@@ -20,5 +20,12 @@ export class RecruitmentInfoDetailsComponent {
     this.newApplicationDate =  new Date(value.applicationDate);
     this.currentProject = Object.assign({}, value);
   };
+
+  save(){
+    this.saved.emit(this.currentProject);
+  }
+  cancel(){
+    this.cancelled.emit(this.currentProject);
+  }
 
 }

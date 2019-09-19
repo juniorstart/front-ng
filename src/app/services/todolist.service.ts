@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TodoListInterface } from '../interfaces/todolistInterface';
-import { AddTaskInterface } from '../interfaces/addTaskInterface';
-import { TaskInterface } from '../interfaces/taskInterface';
+import { AddTask } from '../interfaces/addTask.interface';
+import { Task } from '../interfaces/task.interface';
 import { Observable } from 'rxjs';
+import { TodoList } from '../interfaces/todolist.interface';
 
 const BASE_URL = 'http://localhost:5001/api/todolists/';
 
@@ -17,22 +17,22 @@ export class TodolistService {
   getUrl(td:boolean,withId:boolean,id?:Number):string{
     return `${BASE_URL}${td?'todolist':'task'}/${withId? `${id}` : ''}`;
   }
-  getall():Observable<TodoListInterface[]>{
-    return this.httpClient.get<TodoListInterface[]>(BASE_URL);
+  getall():Observable<TodoList[]>{
+    return this.httpClient.get<TodoList[]>(BASE_URL);
   }
-  deleteTask(id:Number):void{
-    this.httpClient.delete(this.getUrl(false,true,id));
+  deleteTask(id:Number){
+    return this.httpClient.delete(this.getUrl(false,true,id));
   }
-  deleteTodoList(id:Number):void{
-    this.httpClient.delete(this.getUrl(true,true,id));
+  deleteTodoList(id:Number){
+    return this.httpClient.delete(this.getUrl(true,true,id));
   }
-  addTodoList(item:TodoListInterface):Observable<TodoListInterface>{
-    return this.httpClient.post<TodoListInterface>(this.getUrl(true,false),item);
+  addTodoList(item:TodoList):Observable<TodoList>{
+    return this.httpClient.post<TodoList>(this.getUrl(true,false),item);
   }
-  addTask(item:AddTaskInterface):Observable<TaskInterface>{
-    return this.httpClient.post<TaskInterface>(this.getUrl(false,false),item);
+  addTask(item:AddTask):Observable<Task>{
+    return this.httpClient.post<Task>(this.getUrl(false,false),item);
   }
-  updateTask(item:TaskInterface):Observable<TaskInterface>{
-    return this.httpClient.put<TaskInterface>(`${BASE_URL}${item.id}`,item);
+  updateTask(item:Task):Observable<Task>{
+    return this.httpClient.put<Task>(`${BASE_URL}${item.id}`,item);
   }
 }

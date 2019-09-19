@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Project } from '../interfaces/project';
-import { Observable } from 'rxjs';
 
+import { Observable } from 'rxjs';
+import {Project} from '../interfaces/project.interface';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 const BASE_URL = "http://localhost:5001/api/recruitment/";
 
 @Injectable({
@@ -32,9 +32,9 @@ export class RecruitmentInfoService {
   }
 
   delete(projectId:number) {
-    this.httpClient.delete(this.getUrl(projectId));
+    return this.httpClient.delete(this.getUrl(projectId));
   }
-  update(project:Project):Observable<Project>{
+  update(project : Project){
     return this.httpClient.put<Project>(this.getUrl(project.id),project);
   }
 }

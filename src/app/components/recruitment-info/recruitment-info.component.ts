@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {RecruitmentInfoService } from '../../services/recruitment-info.service';
-import { Project } from '../../interfaces/project';
-import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
+import {ToastrService} from 'ngx-toastr';
+import {Project} from '../../interfaces/project.interface';
+
 
 @Component({
   selector: 'app-recruitment-info',
@@ -71,11 +71,8 @@ export class RecruitmentInfoComponent implements OnInit {
       });
   }
   deleteProject(project:Project) {
-    this.recruitmentInfoService.delete(project.id)
-      .subscribe(result => {
-        this.getProjects();
-        this.toastr.success('Recruitment info deleted');
-      });
+    this.recruitmentInfoService.delete(project.id).subscribe(result=>this.getProjects());
+    this.toastr.success('Recruitment info deleted');
   }
 
   cancel() {

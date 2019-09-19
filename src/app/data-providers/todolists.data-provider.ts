@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
 import { TodolistService } from '../services/todolist.service';
-import { TodoListInterface } from '../interfaces/todolistInterface';
+import { TodoList } from '../interfaces/todolist.interface';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn:'root'
 })
-export class TodolistsdataproviderService {
+
+export class Todolistsdataprovider {
 
   constructor(private todolistService:TodolistService) { }
 
   prepareTodoListData(data:string){
-      let todo: TodoListInterface = {
+      let todo: TodoList = {
         id:1,
         name: data,
         tasks: [],
         ownerId: 1,
         status: true
       }
-      console.log(todo);
       return this.todolistService.addTodoList(todo);
   }
 }

@@ -1,8 +1,8 @@
 import { Component, Input, Output } from '@angular/core';
-import { TodoListInterface } from 'src/app/interfaces/todolistInterface';
 import { TodolistService } from 'src/app/services/todolist.service';
 import { EventEmitter } from '@angular/core';
-import { TaskInterface } from 'src/app/interfaces/taskInterface';
+import { Task } from 'src/app/interfaces/task.interface';
+import { TodoList } from 'src/app/interfaces/todolist.interface';
 
 @Component({
   selector: 'app-todolist-list',
@@ -11,19 +11,19 @@ import { TaskInterface } from 'src/app/interfaces/taskInterface';
 })
 export class TodolistListComponent  {
 
-  @Input() todoLists: TodoListInterface[];
-  @Output() notify: EventEmitter<TaskInterface> = new EventEmitter();
-  @Output() delete: EventEmitter<TaskInterface> = new EventEmitter();
+  @Input() todoLists: TodoList[];
+  @Output() notify: EventEmitter<Task> = new EventEmitter();
+  @Output() delete: EventEmitter<Task> = new EventEmitter();
 
   trackByFunc(index,item){
     if(!item) return null;
     return item.id;
   }
 
-  Delete(task:TaskInterface){
+  Delete(task:Task){
     this.delete.emit(task);
   }
-  ChangeStatus(task:TaskInterface){
+  ChangeStatus(task:Task){
     this.notify.emit(task);
   }
 }
