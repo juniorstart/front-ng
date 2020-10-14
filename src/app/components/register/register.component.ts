@@ -30,9 +30,8 @@ export class RegisterComponent implements OnInit {
 
   register(){
     this._userLogin = this._registerForm.value['login'];
-    this._userLogin = this._registerForm.value['password'];
-    //zrobić data-providera przed serwisem
-    this.authService.register(Object.assign(this._userRegister, this._registerForm.value))
+
+    this.authService.register(Object.assign({User: this._registerForm.value}))
       .subscribe(
         result=> this.authService.login(this._userLogin),
         error=>this.toastr.error(error),
