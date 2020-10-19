@@ -6,7 +6,7 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list>
-      <mat-list-item *ngFor="let project of projects" (click)="selected.emit(project)">
+      <mat-list-item *ngFor="let project of projects" (click)="selected.emit(project)" [ngClass]="{'answered': project.companyReply}">
         <h2 mat-line>
           {{project.companyName}}
         </h2>
@@ -24,11 +24,11 @@
         </p>
         <p mat-line>
           <span> Application date: </span>
-          <span class="bold"> {{project.applicationDate}}</span>
+          <span class="bold"> {{project.applicationDate | date:'mediumDate'}}</span>
         </p>
         <p mat-line>
           <span> Company reply: </span>
-          <span class="bold"> {{project.companyReply}}</span>
+          <span class="bold"> {{project.companyReply | date:'mediumDate'}}</span>
         </p>
         <p mat-line>
           <span> Notes: </span>

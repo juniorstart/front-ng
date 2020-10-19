@@ -6,7 +6,7 @@ import { Register } from '../interfaces/register.interface';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-const BASE_URL = "https://localhost:5001/";
+const BASE_URL = "http://localhost:5001/";
 
 @Injectable({
   providedIn: 'root'

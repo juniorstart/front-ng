@@ -17,7 +17,7 @@ export class RequestInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    //how to update the request Parameters
+
     const updatedRequest = request.clone({
       headers: request.headers.set("Authorization", 'Bearer ' + this.cookies.get('jwt').split('"')[1])
     });

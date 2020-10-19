@@ -20,7 +20,7 @@ export class RecruitmentInfoComponent implements OnInit {
     this.getProjects();
     this.resetProject();
   }
-  selectProject(project:Project) {
+  selectProject(project: Project) {
     this.selectedProject = project;
   }
 
@@ -30,8 +30,8 @@ export class RecruitmentInfoComponent implements OnInit {
       companyName: "",
       city: "",
       workPlace: "",
-      dateOfCompanyReply: null,
-      applicationDate: null,
+      dateOfCompanyReply: new Date(),
+      applicationDate: new Date(),
       companyReply: false,
       notes: "",
       linkToApplication: "",
@@ -42,13 +42,13 @@ export class RecruitmentInfoComponent implements OnInit {
 
   getProjects() {
     this.projects$ = this.recruitmentInfoService.all();
-    
+
     if(this.projects$ === null){
       this.projects$ = this.resetProject();
     }
   }
   saveProject(project:Project) {
-    
+
     if(!project.id) {
       this.recruitmentInfoService.create(project).subscribe(result=>this.getProjects());
       this.toastr.success('Info added');

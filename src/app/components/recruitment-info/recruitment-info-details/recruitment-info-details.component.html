@@ -7,26 +7,29 @@
       </h1>
     </mat-card-title>
   </mat-card-header>
-  <form (submit)="save()">
+  <form (submit)="f.form.valid && save()" #f="ngForm">
     <mat-card-content>
       <mat-form-field class="full-width">
         <input matInput placeholder="Company name" [(ngModel)]="currentProject.companyName" type="text"
-          name="companyName">
+          name="companyName"
+          required>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="City" [(ngModel)]="currentProject.city" type="text" name="city">
+        <input matInput placeholder="City" [(ngModel)]="currentProject.city" type="text" name="city" required>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Workplace" [(ngModel)]="currentProject.workPlace" type="text" name="workplace">
+        <input matInput placeholder="Workplace" [(ngModel)]="currentProject.workPlace" type="text" name="workplace" required>
       </mat-form-field>
       <mat-form-field class="full-width">
         <textarea matInput placeholder="Details" [(ngModel)]="currentProject.notes" type="text"
-          name="details"></textarea>
+          name="details">
+
+        </textarea>
       </mat-form-field>
       <mat-form-field>
         <input matInput [(ngModel)]="newDateOfCompanyReply" [matDatepicker]="myDatepicker" name="dateOfCompanyReply" placeholder="Company reply date">
         <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #myDatepicker></mat-datepicker>
+        <mat-datepicker #myDatepicker ></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <input matInput [(ngModel)]="newApplicationDate" [matDatepicker]="myDatepicker2" name="applicationDate" placeholder="Application date">

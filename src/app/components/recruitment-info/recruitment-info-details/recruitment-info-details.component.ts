@@ -21,10 +21,10 @@ export class RecruitmentInfoDetailsComponent {
     this.currentProject = Object.assign({}, value);
   };
 
-  save(){
+  save() {
     this.saved.emit(this.currentProject);
   }
-  cancel(){
+  cancel() {
     this.cancelled.emit(this.currentProject);
   }
 

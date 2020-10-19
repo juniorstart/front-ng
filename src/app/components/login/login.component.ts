@@ -34,6 +34,13 @@ export class LoginComponent implements OnInit {
         this.authService.setToken(JSON.stringify(result));
         this.toastr.success('Logged succesfully');
         this.router.navigate(['']);
+      },error  => {
+        if (error.error.errors) {
+          (Object.values(error.error.errors) as string[]).reduce((acc, val) => acc.concat(val), []).forEach(msg => this.toastr.error(msg));
+        } else {
+          this.toastr.error(error.error.ErrorMessage);
+        }
+
       });
   }
 
