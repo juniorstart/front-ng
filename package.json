@@ -15,7 +15,6 @@
     "@angular/animations": "~8.2.4",
     "@angular/cdk": "~8.1.4",
     "@angular/common": "~8.2.4",
-    "@angular/compiler": "~8.2.4",
     "@angular/core": "~8.2.4",
     "@angular/forms": "~8.2.4",
     "@angular/material": "^8.1.4",
@@ -32,10 +31,11 @@
     "typescript": "~3.5.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1001.7",
+    "@angular-devkit/build-angular": "~0.803.3",
     "@angular-devkit/build-ng-packagr": "~0.803.3",
-    "@angular/cli": "^10.1.7",
-    "@angular/compiler-cli": "^4.4.7",
+    "@angular/cli": "~8.3.3",
+    "@angular/compiler": "~8.2.4",
+    "@angular/compiler-cli": "~8.2.4",
     "@angular/language-service": "~8.2.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
