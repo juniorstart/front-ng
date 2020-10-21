@@ -6,7 +6,7 @@
             <h2>Register</h2>
           </mat-card-title>
         </mat-card-header>
-        <form [formGroup]="_registerForm" (submit)="register(_registerForm.value)">
+        <form [formGroup]="_registerForm" (submit)="register()">
           <mat-card-content>
             <mat-form-field>
               <input matInput placeholder="Login" formControlName="login" type="text" name="login">

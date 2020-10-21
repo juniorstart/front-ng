@@ -6,7 +6,7 @@
         <mat-checkbox [(ngModel)]="task.status" (ngModelChange)="changeStatus($event)" name="status">Done?</mat-checkbox>
     </section>
     <section>
-        <button mat-icon-button (click)="delete(project);$event.stopImmediatePropagation();">
+        <button mat-icon-button (click)="delete(task);$event.stopImmediatePropagation();">
             <mat-icon>close</mat-icon>
         </button>
     </section>

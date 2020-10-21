@@ -14,12 +14,11 @@ export class SingleTaskComponent {
   @Output() statusChange = new EventEmitter();
   @Output() deleted = new EventEmitter();
 
-  delete(project:Project){
+  delete(project: Task) {
 
     this.deleted.emit(project);
   }
-  changeStatus(event){
-    
+  changeStatus(event) {
     this.statusChange.emit(event);
   }
 }

@@ -15,15 +15,15 @@ export class TodolistListComponent  {
   @Output() notify: EventEmitter<Task> = new EventEmitter();
   @Output() delete: EventEmitter<Task> = new EventEmitter();
 
-  trackByFunc(index,item){
+  trackByFunc(index,item) {
     if(!item) return null;
     return item.id;
   }
 
-  Delete(task:Task){
+  Delete(task: Task) {
     this.delete.emit(task);
   }
-  ChangeStatus(task:Task){
+  ChangeStatus(task: Task) {
     this.notify.emit(task);
   }
 }

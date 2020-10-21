@@ -7,7 +7,6 @@
     <mat-card-content>
         <mat-list>
             <mat-expansion-panel *ngFor="let todolist of todoLists;trackBy:trackByFunc" >
-                {{trackByIndex}}
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         {{todolist.name}}
@@ -18,8 +17,8 @@
                 </mat-expansion-panel-header>
                 <mat-card-content>
                     <mat-list>
-                        <app-single-task *ngFor="let task of todolist.tasks" 
-                        (statusChange)=ChangeStatus(task) 
+                        <app-single-task *ngFor="let task of todolist.tasks"
+                        (statusChange)=ChangeStatus(task)
                         [task]="task"
                         (deleted)=Delete(task)></app-single-task>
                     </mat-list>

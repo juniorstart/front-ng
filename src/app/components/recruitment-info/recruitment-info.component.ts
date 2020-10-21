@@ -14,7 +14,7 @@ export class RecruitmentInfoComponent implements OnInit {
   projects$;
   selectedProject: Project;
 
-  constructor(private recruitmentInfoService: RecruitmentInfoService,private toastr: ToastrService) { }
+  constructor(private recruitmentInfoService: RecruitmentInfoService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getProjects();
