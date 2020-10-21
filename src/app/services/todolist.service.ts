@@ -4,8 +4,9 @@ import { AddTask } from '../interfaces/addTask.interface';
 import { Task } from '../interfaces/task.interface';
 import { Observable } from 'rxjs';
 import { TodoList } from '../interfaces/todolist.interface';
+import {environment} from '../../environments/environment';
 
-const BASE_URL = 'http://localhost:5001/api/todolists/';
+const BASE_URL = `${environment.apiUrl}/api/todolists/`;
 
 @Injectable({
   providedIn: 'root'

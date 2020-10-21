@@ -3,7 +3,9 @@ import { Observable } from 'rxjs';
 import {Project} from '../interfaces/project.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-const BASE_URL = "http://localhost:5001/api/recruitment/";
+import {environment} from '../../environments/environment';
+
+const BASE_URL = `${environment.apiUrl}/api/recruitment/`;
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ const BASE_URL = "http://localhost:5001/api/recruitment/";
 export class RecruitmentInfoService {
 
   constructor(private httpClient: HttpClient) { }
-  
+
   getUrl(id:number):string {
     return `${BASE_URL}${id}`;
   }
