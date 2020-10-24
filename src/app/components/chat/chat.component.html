@@ -1,0 +1,22 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="side" opened>
+    <app-room-list [rooms]="rooms" [id]="user.id" (selectRoom)="onSelect($event)"></app-room-list>
+  </mat-sidenav>
+  <mat-sidenav position="end" mode="side" opened *ngIf="isSelected">
+    <app-user-list [members]="selectedRoom.users"></app-user-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="conversation-wrapper">
+    <section class="empty-conversation" *ngIf="!isSelected">
+      <h1 class="mat-display-1">
+        Select a conversation from the left to start chatting
+      </h1>
+    </section>
+    <section *ngIf="isSelected" class="conversation">
+      <app-message-container
+        [name]="selectedRoom.name"
+        [length]="selectedRoom.users.length"
+        [messages]="selectedRoom.messages"></app-message-container>
+      <app-input (message)="onSend($event)"></app-input>
+    </section>
+  </mat-sidenav-content>
+</mat-sidenav-container>
