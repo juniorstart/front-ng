@@ -6,6 +6,8 @@ import { Register } from '../interfaces/register.interface';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {environment} from '../../environments/environment';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {User} from '../models/user';
 
 const BASE_URL = `${environment.apiUrl}/`;
 
@@ -14,23 +16,42 @@ const BASE_URL = `${environment.apiUrl}/`;
 })
 export class AuthenticationService {
 
-  constructor(private httpClient: HttpClient, private cookies: CookieService, private _router: Router) { }
+  private currentUserKey = 'current-user';
 
-  setToken(token: string):void{
+  constructor(private httpClient: HttpClient, private cookies: CookieService, private router: Router, private jwtHelper: JwtHelperService) { }
+
+  setToken(token: string): void {
     this.cookies.set('jwt', token);
   }
 
-  login(data: Login):Observable<string>{
-    return this.httpClient.post<string>(BASE_URL + 'login', data);
+  login(data: Login): Observable<string> {
+    const response = this.httpClient.post<string>(BASE_URL + 'login', data);
+    response.toPromise().then(x => this.setUser(x));
+    return response;
   }
-  register(data: Register):Observable<boolean>{
+  register(data: Register): Observable<boolean>{
     return this.httpClient.post<boolean>(BASE_URL + 'register', data);
   }
-  isAuthenticated(): boolean{
+  isAuthenticated(): boolean {
     return this.cookies.get('jwt').length > 0;
   }
-  logout():void{
+
+  getUser = (): User => {
+    const ob = JSON.parse(localStorage.getItem(this.currentUserKey));
+    const user = JSON.parse(ob['user']);
+    return user as User;
+  }
+
+  setUser = (token: string): void => {
+    localStorage.setItem(
+      this.currentUserKey,
+      JSON.stringify(this.jwtHelper.decodeToken(token))
+    );
+  }
+
+  logout(): void {
       this.cookies.delete('jwt');
-      this._router.navigate(['/login']);
+      localStorage.removeItem(this.currentUserKey);
+      this.router.navigate(['/login']);
   }
 }
