@@ -17,13 +17,19 @@ import { LoginModule } from './components/login/login.module';
 import { RegisterModule } from './components/register/register.module';
 import { InputComponent } from './app/components/chat/input/input.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { MessageContainerComponent } from './components/chat/message-container/message-container.component';
+import { RoomListComponent } from './components/chat/room-list/room-list.component';
+import { UserListComponent } from './components/chat/user-list/user-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     InputComponent,
-    ChatComponent
+    ChatComponent,
+    MessageContainerComponent,
+    RoomListComponent,
+    UserListComponent
   ],
   imports: [
     AppRoutingModule,
