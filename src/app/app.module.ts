@@ -16,12 +16,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginModule } from './components/login/login.module';
 import { RegisterModule } from './components/register/register.module';
 import { InputComponent } from './app/components/chat/input/input.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputComponent
+    InputComponent,
+    ChatComponent
   ],
   imports: [
     AppRoutingModule,
