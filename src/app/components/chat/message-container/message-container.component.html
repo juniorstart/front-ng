@@ -1,1 +1,15 @@
-<p>message-container works!</p>
+<div class="mat-typography conversation-header">
+  <h2>{{ name }}</h2>
+  <p>{{ length }} Members</p>
+</div>
+
+<mat-divider></mat-divider>
+<mat-list #scroller dense class="conversation-history mat-typography">
+  <mat-list-item *ngFor="let message of messages">
+    <div class="message-content">
+      <span class="sender">{{ message.sender }}</span>
+      <span class="time">{{ message.sendTime | date: 'shortTime' }}</span>
+      <p class="content">{{ message.content }}</p>
+    </div>
+  </mat-list-item>
+</mat-list>

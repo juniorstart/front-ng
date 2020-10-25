@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 2*70px);
+}
+
+.conversation-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.empty-conversation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.mat-card {
+  height: 100%;
+  padding: 0 24px;
+}
+
+.right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+  width: 100%;
+}

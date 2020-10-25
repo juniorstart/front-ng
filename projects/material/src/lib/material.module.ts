@@ -45,7 +45,7 @@ import  {
     MatButtonToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   exports: [
     MatButtonModule,

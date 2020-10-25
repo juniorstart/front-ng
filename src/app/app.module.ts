@@ -15,12 +15,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginModule } from './components/login/login.module';
 import { RegisterModule } from './components/register/register.module';
-import { InputComponent } from './app/components/chat/input/input.component';
+import { InputComponent } from './components/chat/input/input.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { MessageContainerComponent } from './components/chat/message-container/message-container.component';
 import { RoomListComponent } from './components/chat/room-list/room-list.component';
 import { UserListComponent } from './components/chat/user-list/user-list.component';
+import {MatTabsModule} from '@angular/material';
+import {JwtModule} from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+  return localStorage.getItem('auth-token');
+}
 
 @NgModule({
   declarations: [
@@ -45,9 +50,15 @@ import { UserListComponent } from './components/chat/user-list/user-list.compone
     RegisterModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatTabsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      }
+    })
   ],
-  providers: [CookieService,AuthGuardService,{
+  providers: [CookieService, AuthGuardService, {
     provide: HTTP_INTERCEPTORS,
     useClass: RequestInterceptor,
     multi: true

@@ -5,13 +5,15 @@ import { RecruitmentInfoComponent } from './components/recruitment-info/recruitm
 import { TodolistsComponent } from './components/todolists/todolists.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import {ChatComponent} from './components/chat/chat.component';
 
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent,data: { animation: 'home' }},
-  {path: 'register', component: RegisterComponent,data: { animation: 'home' }},
-  {path:'', component:RecruitmentInfoComponent, canActivate:[AuthGuardService],data: { animation: 'recruitmentInfo' }},
-  {path:'todo', component:TodolistsComponent, canActivate:[AuthGuardService],data: { animation: 'todo' }}
+  {path: 'login', component: LoginComponent, data: { animation: 'home' }},
+  {path: 'register', component: RegisterComponent, data: { animation: 'home' }},
+  {path: '', component: RecruitmentInfoComponent, canActivate:[AuthGuardService], data: { animation: 'recruitmentInfo' }},
+  {path: 'todo', component: TodolistsComponent, canActivate:[AuthGuardService], data: { animation: 'todo' }},
+  {path: 'chat', component: ChatComponent, canActivate: [AuthGuardService], data: { animation: 'todo' }}
 ];
 
 @NgModule({

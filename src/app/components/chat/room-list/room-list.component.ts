@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Room} from '../../../models/room';
+
 
 @Component({
   selector: 'app-room-list',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./room-list.component.scss']
 })
 export class RoomListComponent implements OnInit {
+  @Input() rooms: Room[];
+  @Input() id: number;
+  @Output() selectRoom = new EventEmitter<object>();
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  enterRoom = (name: string, id: number) => {
+    this.selectRoom.emit({ name, id });
   }
-
 }

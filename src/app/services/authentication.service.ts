@@ -36,10 +36,10 @@ export class AuthenticationService {
     return this.cookies.get('jwt').length > 0;
   }
 
-  getUser = (): User => {
+  getUser = (): string => {
     const ob = JSON.parse(localStorage.getItem(this.currentUserKey));
-    const user = JSON.parse(ob['user']);
-    return user as User;
+    const user = JSON.parse(ob['unique_name']);
+    return user;
   }
 
   setUser = (token: string): void => {

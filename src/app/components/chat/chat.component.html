@@ -1,6 +1,6 @@
 <mat-sidenav-container class="container">
   <mat-sidenav mode="side" opened>
-    <app-room-list [rooms]="rooms" [id]="user.id" (selectRoom)="onSelect($event)"></app-room-list>
+    <app-room-list [rooms]="rooms" [id]="user" (selectRoom)="onSelect($event)"></app-room-list>
   </mat-sidenav>
   <mat-sidenav position="end" mode="side" opened *ngIf="isSelected">
     <app-user-list [members]="selectedRoom.users"></app-user-list>

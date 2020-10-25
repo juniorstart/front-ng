@@ -1,1 +1,8 @@
-<p>user-list works!</p>
+<mat-card>
+  <mat-list class="members">
+    <mat-list-item *ngFor="let member of members">
+     
+      <p matLine>{{ member.name }}</p>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
