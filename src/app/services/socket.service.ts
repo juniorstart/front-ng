@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as signalR from '@aspnet/signalr';
+import * as signalR from '@microsoft/signalr';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import {Message} from '../models/message';
