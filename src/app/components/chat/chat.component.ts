@@ -22,7 +22,7 @@ import {AuthenticationService} from '../../services/authentication.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent
-  implements OnInit, AfterViewChecked, AfterViewInit, OnDestroy {
+  implements OnInit, OnDestroy {
   @ViewChild('scroller', {static: false, read: ElementRef }) private scroller: ElementRef;
 
   selectedRoom: Room = new Room();
@@ -44,19 +44,6 @@ export class ChatComponent
     this.socket.leaveRoom(+this.user);
   }
 
-  ngAfterViewInit(): void {
-    this.scroll();
-  }
-
-  ngAfterViewChecked(): void {
-    setInterval(this.scroll, 10);
-  }
-
-  scroll = () => {
-    try {
-      this.scroller.nativeElement.scrollTop = this.scroller.nativeElement.scrollHeight;
-    } catch (err) {}
-  }
 
   initConnection = (): void => {
     this.user = this.authService.getUser();
