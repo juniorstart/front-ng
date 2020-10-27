@@ -10,21 +10,31 @@ import {Room} from '../models/room';
   providedIn: 'root'
 })
 export class SocketService {
-  private hubConnection: signalR.HubConnection;
-  constructor() {}
 
-  public startConnection = () => {
+  private hubConnection: signalR.HubConnection;
+  private connectionIsEstablished = false;
+
+  constructor() {
+    this.createConnection();
+    this.startConnection();
+  }
+
+  private createConnection() {
     this.hubConnection = new signalR.HubConnectionBuilder()
       .configureLogging(signalR.LogLevel.Debug)
-      .withUrl(`${environment.apiUrl}/chat`, {
-        skipNegotiation: true,
-        transport: signalR.HttpTransportType.WebSockets
-      })
+      .withUrl(`${environment.apiUrl}/chat`)
       .build();
+  }
+
+  public startConnection = () => {
+
 
     this.hubConnection
       .start()
-      .then(() => console.log('Connection started'))
+      .then(() => {
+        this.connectionIsEstablished = true;
+        console.log('Hub connection started');
+      })
       .catch(err => console.log(`Error while starting connection: ${err}`));
   }
 
