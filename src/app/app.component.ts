@@ -21,7 +21,8 @@ export class AppComponent  {
 
   linksWithLogin = [
     { path: '/', icon: 'home', label: 'Recruitment info' },
-    { path: '/todo', icon: 'list', label: 'Todo list' }
+    { path: '/todo', icon: 'list', label: 'Todo list' },
+    { path: '/chat', icon: 'chat', label: 'Chat' }
   ]
 
   prepareRouterState(router: RouterOutlet) {

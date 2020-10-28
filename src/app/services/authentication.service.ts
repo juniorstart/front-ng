@@ -36,9 +36,11 @@ export class AuthenticationService {
     return this.cookies.get('jwt').length > 0;
   }
 
-  getUser = (): string => {
+  getUser = (): User => {
     const ob = JSON.parse(localStorage.getItem(this.currentUserKey));
-    const user = JSON.parse(ob['unique_name']);
+    const user = new User();
+    user.name = ob.Fullname;
+    user.id = ob.unique_name;
     return user;
   }
 

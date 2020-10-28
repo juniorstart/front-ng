@@ -8,7 +8,7 @@
   <mat-list-item *ngFor="let message of messages">
     <div class="message-content">
       <span class="sender">{{ message.sender }}</span>
-      <span class="time">{{ message.sendTime | date: 'shortTime' }}</span>
+      <span class="time">{{ message.sendTime | date: 'short' }}</span>
       <p class="content">{{ message.content }}</p>
     </div>
   </mat-list-item>

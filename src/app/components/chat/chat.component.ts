@@ -26,7 +26,7 @@ export class ChatComponent
   @ViewChild('scroller', {static: false, read: ElementRef }) private scroller: ElementRef;
 
   selectedRoom: Room = new Room();
-  user: string; // id of user at this moment
+  user: User; // id of user at this moment
   rooms: Room[] = [];
   messageContent: string;
   messageListener: any;
@@ -41,7 +41,8 @@ export class ChatComponent
   }
 
   ngOnDestroy(): void {
-    this.socket.leaveRoom(+this.user);
+    this.socket.leaveRoom(this.user.id);
+    this.socket.closeConnection();
   }
 
 
@@ -55,7 +56,7 @@ export class ChatComponent
       .getRoomsListener()
       .subscribe((response: any) => {
         response.forEach(({ item1, item2 }) => {
-          let room = new Room();
+          const room = new Room();
           room.id = item1;
           room.name = item2;
           this.rooms.push(room);
@@ -90,8 +91,8 @@ export class ChatComponent
       return;
     }
     const mess = new Message();
-    mess.Sender = this.user.toString();
-    mess.Content = message;
+    mess.sender = this.user.name;
+    mess.content = message;
     this.socket.sendMessage(mess);
   }
 }

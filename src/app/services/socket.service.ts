@@ -38,6 +38,12 @@ export class SocketService {
       .catch(err => console.log(`Error while starting connection: ${err}`));
   }
 
+  public closeConnection = (): void => {
+    this.hubConnection.stop().then(() => {
+      this.connectionIsEstablished = false;
+      console.log('Hub connection closed');
+    })
+  }
 
   public getMessageListener = (): Observable<Message> => {
     return new Observable<Message>(observer => {
@@ -64,14 +70,16 @@ export class SocketService {
   }
 
   public changeRoom = (roomName: string, id: number): void => {
-    this.hubConnection.invoke('ChangeRoom', roomName, id);
+    this.hubConnection.invoke('ChangeRoom', roomName, +id);
   }
 
   public enterRoom = (roomName: string, id: number): void => {
-    this.hubConnection.invoke('EnterRoom', roomName, id);
+    this.hubConnection.invoke('EnterRoom', roomName, +id);
   }
 
   public leaveRoom = (id: number) => {
-    this.hubConnection.invoke('LeaveRoom', id);
+    this.hubConnection.invoke('LeaveRoom', +id);
   }
+
+
 }
