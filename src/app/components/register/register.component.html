@@ -9,19 +9,56 @@
         <form [formGroup]="_registerForm" (submit)="register()">
           <mat-card-content>
             <mat-form-field>
+              <mat-label>Login</mat-label>
               <input matInput placeholder="Login" formControlName="login" type="text" name="login">
+              <mat-error *ngIf="_registerForm.controls['login']?.errors?.required">
+                Login is required.
+              </mat-error>
+              <mat-error *ngIf="_registerForm.controls['login']?.errors?.minLength">
+                Login is too short. Minimum is 4 characters.
+              </mat-error>
+              <mat-error *ngIf=" _registerForm.controls['login']?.errors?.pattern">
+                Login should start with letter.
+              </mat-error>
             </mat-form-field>
-            <mat-form-field>
+
+            <mat-form-field [ngClass]="{'pb-1': _registerForm.controls['password']?.errors && _registerForm.touched}" >
+              <mat-label>Password</mat-label>
               <input matInput placeholder="Password" formControlName="password" type="password" name="password">
+              <mat-error *ngIf="_registerForm.controls['password']?.errors?.required">
+                Password is required.
+              </mat-error>
+              <mat-error *ngIf=" _registerForm.controls['password']?.errors?.minlength">
+                Password is too short.
+              </mat-error>
+              <mat-error *ngIf=" _registerForm.controls['password']?.errors?.pattern">
+                Password should have at least one big character, numer and special character, minimum lenght is 6 characters.
+              </mat-error>
             </mat-form-field>
+
             <mat-form-field>
+              <mat-label>Firstname</mat-label>
               <input matInput placeholder="Firstname" formControlName="firstName" type="text" name="firstname">
+              <mat-error *ngIf="_registerForm.controls['firstName']?.errors?.required">
+                FirstName is required.
+              </mat-error>
             </mat-form-field>
             <mat-form-field>
+              <mat-label>Lastname</mat-label>
               <input matInput placeholder="Lastname" formControlName="lastName" type="text" name="lastname">
+              <mat-error *ngIf="_registerForm.controls['lastName']?.errors?.required">
+                LastName is required.
+              </mat-error>
             </mat-form-field>
             <mat-form-field>
+              <mat-label>Email</mat-label>
               <input matInput placeholder="Email" formControlName="email" type="text" name="email">
+              <mat-error *ngIf="_registerForm.controls['email']?.errors?.required">
+                Email is required.
+              </mat-error>
+              <mat-error *ngIf="_registerForm.controls['email']?.errors?.email">
+                This is not an email.
+              </mat-error>
             </mat-form-field>
           </mat-card-content>
           <mat-card-actions>

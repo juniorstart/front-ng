@@ -22,6 +22,8 @@ import { RoomListComponent } from './components/chat/room-list/room-list.compone
 import { UserListComponent } from './components/chat/user-list/user-list.component';
 import {MatTabsModule} from '@angular/material';
 import {JwtModule} from '@auth0/angular-jwt';
+import {RegisterComponent} from './components/register/register.component';
+import {CommonModule} from '@angular/common';
 
 export function tokenGetter() {
   return localStorage.getItem('auth-token');
@@ -37,6 +39,8 @@ export function tokenGetter() {
     UserListComponent
   ],
   imports: [
+    RegisterModule,
+    CommonModule,
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
 import { MaterialModule } from 'projects/material/src/public-api';
+import {CommonModule} from '@angular/common';
 
 
 
@@ -11,7 +12,8 @@ import { MaterialModule } from 'projects/material/src/public-api';
   imports: [
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   exports:[RegisterComponent]
 })
