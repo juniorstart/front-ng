@@ -8,13 +8,13 @@
         </mat-card-header>
         <form [formGroup]="_registerForm" (submit)="register()">
           <mat-card-content>
-            <mat-form-field>
+            <mat-form-field [ngClass]="{'pb-1': _registerForm.controls['login']?.errors && _registerForm.controls['login'].touched}">
               <mat-label>Login</mat-label>
               <input matInput placeholder="Login" formControlName="login" type="text" name="login">
               <mat-error *ngIf="_registerForm.controls['login']?.errors?.required">
                 Login is required.
               </mat-error>
-              <mat-error *ngIf="_registerForm.controls['login']?.errors?.minLength">
+              <mat-error *ngIf="_registerForm.controls['login']?.errors?.minlength">
                 Login is too short. Minimum is 4 characters.
               </mat-error>
               <mat-error *ngIf=" _registerForm.controls['login']?.errors?.pattern">
@@ -22,7 +22,7 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field [ngClass]="{'pb-1': _registerForm.controls['password']?.errors && _registerForm.touched}" >
+            <mat-form-field [ngClass]="{'pb-1': _registerForm.controls['password']?.errors && _registerForm.controls['password'].touched}" >
               <mat-label>Password</mat-label>
               <input matInput placeholder="Password" formControlName="password" type="password" name="password">
               <mat-error *ngIf="_registerForm.controls['password']?.errors?.required">
